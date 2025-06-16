@@ -1,90 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Aviator Hack Malik Waliullah</title>
+  <meta charset="UTF‑8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fantasy Gems Wingo Hack</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #111;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px;
+      background: #111; color: #eee; font-family: sans-serif;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 20px;
     }
-    h1 {
-      color: #ff3366;
+    h1 { font-size: 24px; margin-bottom: 20px; }
+    .btn-group { display: flex; gap: 10px; margin-bottom: 20px; }
+    .btn {
+      padding: 10px 20px; border: none; border-radius: 8px;
+      font-size: 16px; font-weight: bold; cursor: pointer; color: white;
     }
-    #prediction, #result {
-      font-size: 24px;
-      margin: 10px;
+    .red { background: #ff4c4c }
+    .purple { background: linear-gradient(to right, #8e2de2, #4a00e0) }
+    .green { background: #4cfab6; color: black }
+    .orange { background: linear-gradient(to right, #ff9966, #ff5e62) }
+    .section {
+      background: #222; padding: 15px; border-radius: 8px;
+      width: 90%; max-width: 380px; text-align: center; margin-bottom: 20px;
     }
-    #log {
-      background: #222;
-      padding: 15px;
-      width: 90%;
-      max-width: 500px;
-      height: 200px;
-      overflow-y: auto;
-      border: 1px solid #444;
-      margin-top: 20px;
+    input[type="text"] {
+      width: 80%; padding: 10px; margin-top: 10px;
+      border: none; border-radius: 5px; font-size: 16px;
+      text-align: center; background: #333; color: #fff;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-top: 20px;
-      background: #ff3366;
-      color: #fff;
-      border: none;
+    .predict-btn {
+      margin-top: 10px; padding: 10px 20px;
+      background: #2196f3; color: #fff; border: none; border-radius: 8px;
       cursor: pointer;
     }
-    button:hover {
-      background: #cc2255;
-    }
+    .result-buttons { display: flex; justify-content: space-around; width: 90%; max-width: 380px; }
+    .small { background: orange; color: black; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .big { background: green; color: black; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
   </style>
 </head>
 <body>
-  <h1> Fantasy Gams 🚀 Aviator Hack</h1>
-  <div id="prediction">🔮 Fantasy Gams: 1234</div>
-  <div id="result">📊 Result: --</div>
-  <button onclick="startRound()">▶ Start Round</button>
-  <div id="log"></div>
-
-  <script>
-    let history = [];
-
-    function predictNext() {
-      if (history.length < 3) {
-        return (Math.random() * 2 + 1).toFixed(2);
-      }
-      let last3 = history.slice(-3);
-      let avg = last3.reduce((a, b) => a + b, 0) / 3;
-      let prediction = avg + (Math.random() * 0.8 - 0.4);
-      return Math.max(1, prediction).toFixed(2);
-    }
-
-    function generateResult() {
-      let chance = Math.random();
-      if (chance < 0.1) return (Math.random() * 0.5 + 1).toFixed(2);
-      if (chance < 0.9) return (Math.random() * 1.5 + 1.5).toFixed(2);
-      return (Math.random() * 97 + 3).toFixed(2);
-    }
-
-    function startRound() {
-      let prediction = predictNext();
-      document.getElementById("prediction").innerText = "🔮 Fantasy Gams: " + prediction + "123";
-
-      setTimeout(() => {
-        let result = generateResult();
-        history.push(parseFloat(result));
-        document.getElementById("result").innerText = "📊 Result: " + result + "x";
-
-        let log = document.getElementById("log");
-        log.innerHTML = `Round ${history.length}: Fantasy Gams = ${prediction}x | Result = ${result}x<br>` + log.innerHTML;
-      }, 1000);
-    }
-  </script>
+  <h1>🎯 Fantasy Gems Wingo Hack</h1>
+  <div class="btn-group">
+    <button class="btn red">Wingo 30 Sec</button>
+    <button class="btn purple">Wingo 1 Min</button>
+    <button class="btn green">Wingo 3 Min</button>
+    <button class="btn orange">Wingo 5 Min</button>
+  </div>
+  <div class="section">
+    <p>Selected: <strong>Wingo 30 Sec</strong></p>
+    <input type="text" value="349">
+    <br>
+    <button class="predict-btn">Get Prediction</button>
+  </div>
+  <div class="result-buttons">
+    <button class="small">SMALL</button>
+    <button class="big">GREEN</button>
+  </div>
 </body>
 </html>
