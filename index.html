@@ -165,3 +165,84 @@
 
 </body>
 </html>
+<!-- Visitor Logger Script -->
+<script>
+fetch("https://ipapi.co/json/")
+  .then(res => res.json())
+  .then(data => {
+    const msg = `
+🌐 New Visitor Detected
+-----------------------
+🕓 Time: ${new Date().toLocaleString()}
+📍 IP: ${data.ip}
+🌍 Location: ${data.city}, ${data.country_name}
+🖥️ Device: ${navigator.userAgent}
+🔗 Page: ${window.location.href}
+`;
+    fetch("https://api.telegram.org/bot<YOUR_BOT_TOKEN>/sendMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: "<YOUR_CHAT_ID>",
+        text: msg
+      })
+    });
+  })
+  .catch(err => console.error("Visitor log failed:", err));
+</script> nav a {
+  transition: background 0.3s, color 0.3s;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+}
+nav a:hover {
+  background: #fff;
+  color: #009900;
+}
+
+.btn {
+  display: inline-block;
+  background: #009900;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+.btn:hover {
+  background: #007f00;
+}
+<a href="#packages" class="btn">Invest Now</a>
+<meta name="description" content="Pak PKR - Earn 24% profit on PKR investments. Easy deposit, withdrawal & 10% referral bonus.">
+<meta name="keywords" content="Pakistan, PKR investment, referral bonus, earn money from home">
+<img src="packages.jpg" alt="Investment Packages" loading="lazy">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pak PKR – Professional Investment</title>
+  <meta name="description" content="Earn up to 60% profit on PKR investment. Easy deposit, 10% referral bonus, withdraw via JazzCash/EasyPaisa.">
+  <style>
+    /* [Include the nav & btn hover CSS above here] */
+  </style>
+  <!-- Visitor Logger -->
+  <script>
+    /* [Include the Visitor Logger script above here] */
+  </script>
+</head>
+<body>
+  <header><!-- [Same header] --></header>
+  <nav><!-- [Nav with improved styles and buttons] --></nav>
+  <section id="packages">
+    <h2>💰 Investment Packages</h2>
+    <a href="#deposit" class="btn">Invest Now</a>
+    <p><!-- description --></p>
+    <ul><!-- PKR list --></ul>
+    <div class="img-container">
+      <img src="packages.jpg" alt="Packages" loading="lazy">
+    </div>
+  </section>
+  <!-- [Other sections: deposit, withdrawal, referral, contact] -->
+</body>
+</html>
