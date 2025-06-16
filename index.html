@@ -1,80 +1,117 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
 <head>
-  <meta charset="UTF‑8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fantasy Gems Wingo Hack</title>
-  <style>
-    body {
-      background: #111; color: #eee; font-family: sans-serif;
-      display: flex; flex-direction: column; align-items: center;
-      padding: 20px;
-    }
-    h1 { font-size: 24px; margin-bottom: 20px; }
-    .btn-group { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
-    .btn {
-      padding: 10px 20px; border: none; border-radius: 8px;
-      font-size: 16px; font-weight: bold; cursor: pointer; color: white;
-    }
-    .red { background: #ff4c4c }
-    .purple { background: linear-gradient(to right, #8e2de2, #4a00e0) }
-    .green { background: #4cfab6; color: black }
-    .orange { background: linear-gradient(to right, #ff9966, #ff5e62) }
-    .section {
-      background: #222; padding: 15px; border-radius: 8px;
-      width: 90%; max-width: 380px; text-align: center; margin-bottom: 20px;
-    }
-    input[type="text"] {
-      width: 80%; padding: 10px; margin-top: 10px;
-      border: none; border-radius: 5px; font-size: 16px;
-      text-align: center; background: #333; color: #fff;
-    }
-    .predict-btn {
-      margin-top: 10px; padding: 10px 20px;
-      background: #2196f3; color: #fff; border: none; border-radius: 8px;
-      cursor: pointer;
-    }
-    .result-buttons { display: flex; justify-content: space-around; width: 90%; max-width: 380px; margin-top: 20px; }
-    .small, .big {
-      padding: 10px 20px; border: none; border-radius: 8px;
-      font-weight: bold; cursor: pointer; font-size: 16px;
-    }
-    .small { background: orange; color: black; }
-    .big { background: green; color: black; }
-    .output { margin-top: 20px; font-size: 18px; font-weight: bold; color: yellow; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pak PKR</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #006600;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #009900;
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+        section {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .img-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .img-container img {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        ul {
+            line-height: 2;
+        }
+    </style>
 </head>
 <body>
-  <h1>🎯 Fantasy Gems Wingo Hack</h1>
-  <div class="btn-group">
-    <button class="btn red" onclick="selectWingo('Wingo 30 Sec')">Wingo 30 Sec</button>
-    <button class="btn purple" onclick="selectWingo('Wingo 1 Min')">Wingo 1 Min</button>
-    <button class="btn green" onclick="selectWingo('Wingo 3 Min')">Wingo 3 Min</button>
-    <button class="btn orange" onclick="selectWingo('Wingo 5 Min')">Wingo 5 Min</button>
-  </div>  <div class="section">
-    <p>Selected: <strong id="selectedWingo">Wingo 30 Sec</strong></p>
-    <input type="text" id="gameNumber" value="349">
-    <br>
-    <button class="predict-btn" onclick="getPrediction()">Get Prediction</button>
-  </div>  <div class="result-buttons">
-    <button class="small" onclick="showResult('SMALL')">SMALL</button>
-    <button class="big" onclick="showResult('BIG')">BIG</button>
-  </div>  <div class="output" id="resultText"></div>  <script>
-    let selectedWingo = 'Wingo 30 Sec';
+    <header>
+        <h1>🌟 Pak PKR 🌟</h1>
+        <p>گھر بیٹھے کمائیں 24 گھنٹے</p>
+    </header>
 
-    function selectWingo(type) {
-      selectedWingo = type;
-      document.getElementById("selectedWingo").innerText = type;
-    }
+    <nav>
+        <a href="#packages">پیکجز</a>
+        <a href="#deposit">ڈپازٹ</a>
+        <a href="#withdrawal">ویڈراول</a>
+        <a href="#contact">رابطہ</a>
+    </nav>
 
-    function getPrediction() {
-      const number = document.getElementById("gameNumber").value;
-      const colors = ["RED", "GREEN"];
-      const prediction = colors[Math.floor(Math.random() * colors.length)];
-      document.getElementById("resultText").innerText = `Prediction: ${prediction}`;
-    }
+    <section id="packages">
+        <h2>💰 انویسٹمنٹ پیکجز</h2>
+        <p>مختلف پیکجز جن سے آپ 24% تک منافع حاصل کر سکتے ہیں۔</p>
+        <div class="img-container">
+            <img src="packages.jpg" alt="Packages">
+        </div>
+    </section>
 
-    function showResult(size) {
-      document.getElementById("resultText").innerText = `Selected: ${size}`;
-    }
-  </script></body>
+    <section id="deposit">
+        <h2>💵 ڈپازٹ تفصیل</h2>
+        <p>JazzCash / Easypaisa معلومات:</p>
+        <ul>
+            <li>JazzCash: <strong>03159676813</strong> - Malik Waliullah</li>
+            <li>EasyPaisa: <strong>03267297873</strong> - Malik Wailullah</li>
+        </ul>
+        <p>براہ کرم ادائیگی کے بعد اسکرین شاٹ ضرور بھیجیں۔</p>
+        <div class="img-container">
+            <img src="from_home.jpg" alt="Earning from Home">
+        </div>
+    </section>
+
+    <section id="withdrawal">
+        <h2>🏦 ویڈراول آپشنز</h2>
+        <p>آپ نیچے دیے گئے بینک اور والٹس میں ویڈراول حاصل کر سکتے ہیں:</p>
+        <ul>
+            <li>JazzCash, Easypaisa, Upaisa</li>
+            <li>Google Pay, PayTM, UPI</li>
+            <li>BTC, USDT (TRC20), ETH, LTC</li>
+            <li>SBI, WISE, PAYEER, Perfect Money</li>
+            <li>Bank Accounts, NayaPay, SadaPay, PayMax</li>
+        </ul>
+        <div class="img-container">
+            <img src="withdrawal_options.jpg" alt="Withdrawal Options">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>📞 رابطہ</h2>
+        <p>واٹس ایپ سپورٹ کے لیے رابطہ کریں:</p>
+        <p><strong>03165355105</strong></p>
+        <p>پراسیس آسان ہے: موبائل نمبر، نام، رقم اور طریقہ لکھ کر بھیجیں۔</p>
+        <div class="img-container">
+            <img src="pakistan_flag.jpg" alt="Pakistan Flag">
+        </div>
+    </section>
+</body>
 </html>
