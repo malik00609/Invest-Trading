@@ -2,80 +2,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Color Trading App</title>
+  <title>Color Trading Pakistan</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
-    }
-    .header {
-      background-color: #28a745;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    .container {
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .section {
-      margin-bottom: 20px;
-    }
-    .section h2 {
-      margin-bottom: 10px;
-    }
-    .input-group {
-      margin-bottom: 15px;
-    }
-    .input-group label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    .input-group input, .input-group select {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .btn {
-      background-color: #28a745;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #218838;
-    }
-    .footer {
-      text-align: center;
-      padding: 10px;
-      color: #888;
-      font-size: 14px;
-    }
+    *{box-sizing:border-box}
+    body{font-family:Arial,Helvetica,sans-serif;background:#f2f2f2;margin:0;padding:0}
+    h1,h2,h3{margin:0 0 10px}
+    .header{background:#28a745;color:#fff;padding:20px;text-align:center}
+    .numbers{font-size:14px;margin-top:6px}
+    .numbers span{display:inline-block;margin:0 6px}
+    .container{max-width:700px;margin:40px auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+    .section{margin-bottom:40px}
+    .input-group{margin-bottom:12px}
+    .input-group label{display:block;margin-bottom:4px;font-size:14px}
+    .input-group input,.input-group select{width:100%;padding:8px;border:1px solid #ccc;border-radius:6px}
+    .btn{display:inline-block;background:#28a745;color:#fff;padding:10px 18px;border:none;border-radius:6px;cursor:pointer;font-size:15px}
+    .btn:hover{background:#1e9440}
+    /* Plan cards */
+    .plans{margin-top:10px}
+    .plan-cards{display:flex;flex-direction:column;gap:20px}
+    @media(min-width:600px){.plan-cards{flex-direction:row}}
+    .plan-card{flex:1;background:#f7f7f7;padding:18px;border-radius:10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .plan-card h3{color:#28a745;margin-bottom:8px}
+    /* Game */
+    .game-box{display:flex;flex-direction:column;align-items:center;gap:14px}
+    .color-btn{width:120px;padding:12px;border-radius:8px;border:none;font-weight:bold;color:#fff;cursor:pointer;font-size:16px}
+    .color-btn.red{background:#dc3545}
+    .color-btn.green{background:#28a745}
+    .result{font-size:18px;font-weight:bold}
+    .footer{text-align:center;font-size:13px;color:#777;margin:30px 0 10px}
   </style>
 </head>
 <body>
   <div class="header">
-    <h1>Color Trading - Pakistan</h1>
+    <h1>Color Trading Pakistan</h1>
+    <div class="numbers">
+      <span>EasyPaisa: <strong>0331‑9535871</strong></span>
+      <span>JazzCash: <strong>0315‑9676813</strong></span>
+    </div>
   </div>  <div class="container">
-    <div class="section">
-      <h2>Deposit</h2>
-      <div class="input-group">
-        <label>Amount (PKR)</label>
-        <input type="number" placeholder="Enter amount" />
-      </div>
-      <div class="input-group">
-        <label>Payment Method</label>
-        <select>
-          <option>EasyPaisa</option>
-          <option>JazzCash</option>
-        </select>
-      </div>
-      <div class="input-group">
+    <!-- Special Offer -->
+    <div class="section" style="text-align:center">
+      <h2>Special Offer</h2>
+      <div id="timer" style="font-weight:bold;color:#dc3545;margin:8px 0">Offer ends in 10:00</div>
+      <h3 style="color:#28a745;font-size:26px;">Price: 1500 PKR</h3>
+    </div><!-- Plans -->
+<div class="section plans">
+  <h2 style="text-align:center">Choose Your Plan</h2>
+  <div class="plan-cards">
+    <div class="plan-card">
+      <h3>Basic</h3>
+      <p>PKR 1,000</p>
+      <p>7 Days • 1 Signal/Day</p>
+    </div>
+    <div class="plan-card">
+      <h3>Standard</h3>
+      <p>PKR 1,500</p>
+      <p>15 Days • 2 Signals/Day</p>
+    </div>
+    <div class="plan-card">
+      <h3>Premium</h3>
+      <p>PKR 2,500</p>
+      <p>30 Days • 4 Signals/Day + VIP</p>
+    </div>
+  </div>
+</div>
+
+<!-- Deposit -->
+<div class="section">
+  <h2>Deposit</h2>
+  <div class="input-group"><label>Amount (PKR)</label><input type="number" placeholder="Enter amount"></div>
+  <div class="input-group"><label>Payment Method</label><select><option>EasyPaisa</option><option>JazzCash</option></select></div>
+  <div class="input-group"><label>Your Number</label><input type="text" placeholder="03XX-XXXXXXX"></div>
+  <button class="btn">Submit Deposit</button>
+</div>
+
+<!-- Withdraw -->
+<div class="section">
+  <h2>Withdraw</h2>
+  <div class="input-group"><label>Amount (PKR)</label><input type="number" placeholder="Enter amount"></div>
+  <div class="input-group"><label>Payment Method</label><select><option>EasyPaisa</option><option>JazzCash</option></select></div>
+  <div class="input-group"><label>Your Number</label><input type="text" placeholder="03XX-XXXXXXX"></div>
+  <button class="btn">Submit Withdrawal</button>
+</div>
+
+<!-- Simple Color Prediction Game -->
+<div class="section">
+  <h2>Play Color Prediction</h2>
+  <div class="game-box">
+    <button class="color-btn red" onclick="play('Red')">Red</button>
+    <button class="color-btn green" onclick="play('Green')">Green</button>
+    <div id="game-result" class="result"></div>
+  </div>
+</div>
+
+  </div>  <div class="footer">© 2025 Color Trading Pakistan – All rights reserved.</div><script>
+  /* Offer Timer */
+  let offerTime = 600; // 10 min
+  const timerEl = document.getElementById('timer');
+  const tInterval = setInterval(() => {
+    if (offerTime <= 0) { timerEl.textContent = 'Offer expired'; clearInterval(tInterval); return; }
+    const m = String(Math.floor(offerTime/60)).padStart(2,'0');
+    const s = String(offerTime%60).padStart(2,'0');
+    timerEl.textContent = `Offer ends in ${m}:${s}`;
+    offerTime--; },1000);
+
+  /* Simple Color Game */
+  function play(choice){
+    const resultEl = document.getElementById('game-result');
+    const colors = ['Red','Green'];
+    const random = colors[Math.floor(Math.random()*2)];
+    if(choice===random){
+      resultEl.textContent = `🎉 You Win! Color was ${random}`;
+      resultEl.style.color = '#28a745';
+    } else {
+      resultEl.textContent = `❌ You Lose! Color was ${random}`;
+      resultEl.style.color = '#dc3545';
+    }
+  }
+</script></body>
+</html>
