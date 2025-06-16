@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offer Page</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      text-align: center;
+      padding: 20px;
+    }
+    .timer {
+      font-size: 24px;
+      color: red;
+      margin-bottom: 20px;
+    }
+    .price {
+      font-size: 28px;
+      color: green;
+    }
+    .pay-info {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+    .whatsapp-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background: #25d366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Special Offer Page</h1>
+  <div class="timer" id="countdown">Offer ends in: --:--</div>
+  <div class="price">Price: 1500 PKR</div>
+  <div class="pay-info">
+    Pay via EasyPaisa / JazzCash:<br>
+    0301-1234567 (Name: Ali Raza)
+  </div>
+  <a class="whatsapp-btn" href="https://wa.me/923011234567" target="_blank">Order on WhatsApp</a>
+
+  <script>
+    let duration = 10 * 60;
+    const countdown = document.getElementById('countdown');
+
+    const interval = setInterval(() => {
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
+      countdown.innerText = `Offer ends in: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      duration--;
+      if (duration < 0) {
+        clearInterval(interval);
+        countdown.innerText = "The offer has ended.";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
