@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF‑8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,7 @@
       padding: 20px;
     }
     h1 { font-size: 24px; margin-bottom: 20px; }
-    .btn-group { display: flex; gap: 10px; margin-bottom: 20px; }
+    .btn-group { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
     .btn {
       padding: 10px 20px; border: none; border-radius: 8px;
       font-size: 16px; font-weight: bold; cursor: pointer; color: white;
@@ -34,28 +33,48 @@
       background: #2196f3; color: #fff; border: none; border-radius: 8px;
       cursor: pointer;
     }
-    .result-buttons { display: flex; justify-content: space-around; width: 90%; max-width: 380px; }
-    .small { background: orange; color: black; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-    .big { background: green; color: black; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .result-buttons { display: flex; justify-content: space-around; width: 90%; max-width: 380px; margin-top: 20px; }
+    .small, .big {
+      padding: 10px 20px; border: none; border-radius: 8px;
+      font-weight: bold; cursor: pointer; font-size: 16px;
+    }
+    .small { background: orange; color: black; }
+    .big { background: green; color: black; }
+    .output { margin-top: 20px; font-size: 18px; font-weight: bold; color: yellow; }
   </style>
 </head>
 <body>
   <h1>🎯 Fantasy Gems Wingo Hack</h1>
   <div class="btn-group">
-    <button class="btn red">Wingo 30 Sec</button>
-    <button class="btn purple">Wingo 1 Min</button>
-    <button class="btn green">Wingo 3 Min</button>
-    <button class="btn orange">Wingo 5 Min</button>
-  </div>
-  <div class="section">
-    <p>Selected: <strong>Wingo 30 Sec</strong></p>
-    <input type="text" value="349">
+    <button class="btn red" onclick="selectWingo('Wingo 30 Sec')">Wingo 30 Sec</button>
+    <button class="btn purple" onclick="selectWingo('Wingo 1 Min')">Wingo 1 Min</button>
+    <button class="btn green" onclick="selectWingo('Wingo 3 Min')">Wingo 3 Min</button>
+    <button class="btn orange" onclick="selectWingo('Wingo 5 Min')">Wingo 5 Min</button>
+  </div>  <div class="section">
+    <p>Selected: <strong id="selectedWingo">Wingo 30 Sec</strong></p>
+    <input type="text" id="gameNumber" value="349">
     <br>
-    <button class="predict-btn">Get Prediction</button>
-  </div>
-  <div class="result-buttons">
-    <button class="small">SMALL</button>
-    <button class="big">GREEN</button>
-  </div>
-</body>
+    <button class="predict-btn" onclick="getPrediction()">Get Prediction</button>
+  </div>  <div class="result-buttons">
+    <button class="small" onclick="showResult('SMALL')">SMALL</button>
+    <button class="big" onclick="showResult('BIG')">BIG</button>
+  </div>  <div class="output" id="resultText"></div>  <script>
+    let selectedWingo = 'Wingo 30 Sec';
+
+    function selectWingo(type) {
+      selectedWingo = type;
+      document.getElementById("selectedWingo").innerText = type;
+    }
+
+    function getPrediction() {
+      const number = document.getElementById("gameNumber").value;
+      const colors = ["RED", "GREEN"];
+      const prediction = colors[Math.floor(Math.random() * colors.length)];
+      document.getElementById("resultText").innerText = `Prediction: ${prediction}`;
+    }
+
+    function showResult(size) {
+      document.getElementById("resultText").innerText = `Selected: ${size}`;
+    }
+  </script></body>
 </html>
