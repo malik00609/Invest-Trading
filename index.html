@@ -1,54 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offer Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Special Offer - Malik Waliullah</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       text-align: center;
-      padding: 20px;
+      width: 90%;
+      max-width: 400px;
     }
-    .timer {
-      font-size: 24px;
-      color: red;
-      margin-bottom: 20px;
+
+    h1 {
+      color: #222;
+      margin-bottom: 10px;
     }
-    .price {
-      font-size: 28px;
-      color: green;
-    }
-    .pay-info {
-      margin-top: 20px;
-      font-size: 20px;
-    }
-    .whatsapp-btn {
-      margin-top: 30px;
-      padding: 10px 20px;
+
+    .countdown {
       font-size: 18px;
-      background: #25d366;
+      color: red;
+      margin: 10px 0;
+    }
+
+    .price {
+      font-size: 26px;
+      font-weight: bold;
+      color: #28a745;
+      margin: 15px 0;
+    }
+
+    .pay-info {
+      font-size: 16px;
+      color: #333;
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #25D366;
       color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      font-size: 16px;
       text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1ebe5d;
     }
   </style>
 </head>
 <body>
-  <h1>Special Offer Page</h1>
-  <div class="timer" id="countdown">Offer ends in: --:--</div>
-  <div class="price">Price: 1500 PKR</div>
-  <div class="pay-info">
-    Pay via EasyPaisa / JazzCash:<br>
-    0301-1234567 (Name: Ali Raza)
+  <div class="card">
+    <h1>Special Offer</h1>
+    <div class="countdown" id="countdown">Offer ends in: --:--</div>
+    <div class="price">Price: 1500 PKR</div>
+    <div class="pay-info">
+      Pay via EasyPaisa:<br>
+      <strong>0331-9535871</strong><br>
+      Name: Malik Waliullah<br>
+      Contact: 0316-5355105
+    </div>
+    <a class="whatsapp-btn" href="https://wa.me/923165355105" target="_blank">Order on WhatsApp</a>
   </div>
-  <a class="whatsapp-btn" href="https://wa.me/923011234567" target="_blank">Order on WhatsApp</a>
 
   <script>
-    let duration = 10 * 60;
+    let duration = 10 * 60; // 10 minutes
     const countdown = document.getElementById('countdown');
 
     const interval = setInterval(() => {
