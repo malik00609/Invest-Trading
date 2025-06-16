@@ -1,182 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Special Offer - Malik Waliullah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Trading App</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f2f2f2;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
     }
-
-    .card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    .header {
+      background-color: #28a745;
+      color: white;
+      padding: 20px;
       text-align: center;
-      width: 90%;
-      max-width: 400px;
     }
-
-    h1 {
-      color: #222;
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section h2 {
       margin-bottom: 10px;
     }
-
-    .countdown {
-      font-size: 18px;
-      color: red;
-      margin: 10px 0;
+    .input-group {
+      margin-bottom: 15px;
     }
-
-    .price {
-      font-size: 26px;
-      font-weight: bold;
-      color: #28a745;
-      margin: 15px 0;
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
     }
-
-    .pay-info {
-      font-size: 16px;
-      color: #333;
-      margin: 10px 0;
-      line-height: 1.5;
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
-
-    .whatsapp-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 20px;
-      background-color: #25D366;
+    .btn {
+      background-color: #28a745;
       color: white;
-      font-size: 16px;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
-
-    .whatsapp-btn:hover {
-      background-color: #1ebe5d;
+    .btn:hover {
+      background-color: #218838;
+    }
+    .footer {
+      text-align: center;
+      padding: 10px;
+      color: #888;
+      font-size: 14px;
     }
   </style>
-  .plans {
-  background: #fff;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  max-width: 90%;
-  margin: 30px auto;
-}
-
-.plan-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-@media(min-width: 600px) {
-  .plan-cards {
-    flex-direction: row;
-    justify-content: space-around;
-  }
-}
-
-.plan-card {
-  background: #f7f7f7;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  flex: 1;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.plan-card h3 {
-  margin-bottom: 10px;
-  color: #2BA745;
-}
 </head>
 <body>
-  <div class="plans">
-  <h2 style="text-align:center;">Choose Your Plan</h2>
-  <div class="plan-cards">
-    <div class="plan-card">
-      <h3>Basic</h3>
-      <p>Price: 1000 PKR</p>
-      <p>Duration: 7 Days</p>
-      <p>Access to 1 Signal Per Day</p>
-    </div>
-    <div class="plan-card">
-      <h3>Standard</h3>
-      <p>Price: 1500 PKR</p>
-      <p>Duration: 15 Days</p>
-      <p>2 Signals Daily + Support</p>
-    </div>
-    <div class="plan-card">
-      <h3>Premium</h3>
-      <p>Price: 2500 PKR</p>
-      <p>Duration: 30 Days</p>
-      <p>4 Signals Daily + VIP Group</p>
-    </div>
-  </div>
-</div>
-  <div class="card">
-    <h1>Special Offer</h1>
-    <div class="countdown" id="countdown">Offer ends in: --:--</div>
-    <div class="price">Price: 1500 PKR</div>
-    <div class="pay-info">
-      Pay via EasyPaisa:<br>
-      <strong>0331-9535871</strong><br>
-      Name: Malik Waliullah<br>
-      Contact: 0316-5355105
-    </div>
-    <a class="whatsapp-btn" href="https://wa.me/923165355105" target="_blank">Order on WhatsApp</a>
-  </div>
-
-  <script>
-    let duration = 10 * 60; // 10 minutes
-    const countdown = document.getElementById('countdown');
-
-    const interval = setInterval(() => {
-      const minutes = Math.floor(duration / 60);
-      const seconds = duration % 60;
-      countdown.innerText = `Offer ends in: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      duration--;
-      if (duration < 0) {
-        clearInterval(interval);
-        countdown.innerText = "The offer has ended.";
-      }
-    }, 1000);
-  </script>
-</body>
-</html>
-<div class="plans">
-  <h2 style="text-align:center; margin: 40px 0 20px;">Our Color Trading Plans</h2>
-  <div class="plan-cards">
-    <div class="plan-card">
-      <h3>Basic Plan</h3>
-      <p>💡 3 Color Predictions Daily</p>
-      <p>⏳ Valid for 3 Days</p>
-      <p>💸 Price: 500 PKR</p>
-    </div>
-    <div class="plan-card">
-      <h3>Standard Plan</h3>
-      <p>💡 5 Color Predictions Daily</p>
-      <p>📅 Valid for 7 Days</p>
-      <p>💸 Price: 1000 PKR</p>
-    </div>
-    <div class="plan-card">
-      <h3>Premium Plan</h3>
-      <p>💡 Unlimited Predictions</p>
-      <p>📅 Valid for 30 Days</p>
-      <p>💸 Price: 3000 PKR</p>
-    </div>
-  </div>
-</div>
+  <div class="header">
+    <h1>Color Trading - Pakistan</h1>
+  </div>  <div class="container">
+    <div class="section">
+      <h2>Deposit</h2>
+      <div class="input-group">
+        <label>Amount (PKR)</label>
+        <input type="number" placeholder="Enter amount" />
+      </div>
+      <div class="input-group">
+        <label>Payment Method</label>
+        <select>
+          <option>EasyPaisa</option>
+          <option>JazzCash</option>
+        </select>
+      </div>
+      <div class="input-group">
