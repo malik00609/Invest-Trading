@@ -2,10 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 import random
 
-# پچھلے راؤنڈز
 history = []
 
-# پریڈکشن فنکشن
 def predict_next():
     if len(history) < 3:
         return round(random.uniform(1.0, 2.0), 2)
@@ -13,7 +11,6 @@ def predict_next():
     prediction = avg + random.uniform(-0.4, 0.4)
     return round(max(1.0, prediction), 2)
 
-# ریزلٹ جنریٹر
 def generate_result():
     chance = random.random()
     if chance < 0.1:
@@ -23,7 +20,6 @@ def generate_result():
     else:
         return round(random.uniform(3.0, 100.0), 2)
 
-# راؤنڈ شروع کریں
 def start_round():
     predicted = predict_next()
     prediction_var.set(f"🔮 Prediction: {predicted}x")
@@ -36,7 +32,7 @@ def start_round():
     history_text.insert(tk.END, f"Round {len(history)}: Prediction: {predicted}x | Result: {result}x\n")
     history_text.configure(state='disabled')
 
-# GUI سیٹ اپ
+# GUI setup
 root = tk.Tk()
 root.title("🚀 Aviator-style Prediction Demo")
 root.geometry("500x400")
@@ -45,24 +41,16 @@ root.resizable(False, False)
 style = ttk.Style()
 style.configure("TButton", font=("Segoe UI", 12), padding=10)
 
-# لیبلز
+# Widgets
 prediction_var = tk.StringVar()
 result_var = tk.StringVar()
 
-title_label = ttk.Label(root, text="🎮 Aviator Prediction Tool (Demo)", font=("Segoe UI", 16, "bold"))
-title_label.pack(pady=10)
+ttk.Label(root, text="🎮 Aviator Prediction Tool (Demo)", font=("Segoe UI", 16, "bold")).pack(pady=10)
+ttk.Label(root, textvariable=prediction_var, font=("Segoe UI", 14), foreground="blue").pack()
+ttk.Label(root, textvariable=result_var, font=("Segoe UI", 14), foreground="green").pack()
 
-prediction_label = ttk.Label(root, textvariable=prediction_var, font=("Segoe UI", 14), foreground="blue")
-prediction_label.pack()
+ttk.Button(root, text="▶ Start Round", command=start_round).pack(pady=10)
 
-result_label = ttk.Label(root, textvariable=result_var, font=("Segoe UI", 14), foreground="green")
-result_label.pack()
-
-# بٹن
-start_button = ttk.Button(root, text="▶ Start Round", command=start_round)
-start_button.pack(pady=10)
-
-# ہسٹری
 history_frame = ttk.LabelFrame(root, text="📋 History", padding=10)
 history_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
