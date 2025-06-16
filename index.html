@@ -1,60 +1,90 @@
-import tkinter as tk
-from tkinter import ttk
-import random
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aviator Game Demo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #ff3366;
+    }
+    #prediction, #result {
+      font-size: 24px;
+      margin: 10px;
+    }
+    #log {
+      background: #222;
+      padding: 15px;
+      width: 90%;
+      max-width: 500px;
+      height: 200px;
+      overflow-y: auto;
+      border: 1px solid #444;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      background: #ff3366;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #cc2255;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 Aviator Game Demo</h1>
+  <div id="prediction">🔮 Prediction: --</div>
+  <div id="result">📊 Result: --</div>
+  <button onclick="startRound()">▶ Start Round</button>
+  <div id="log"></div>
 
-history = []
+  <script>
+    let history = [];
 
-def predict_next():
-    if len(history) < 3:
-        return round(random.uniform(1.0, 2.0), 2)
-    avg = sum(history[-3:]) / 3
-    prediction = avg + random.uniform(-0.4, 0.4)
-    return round(max(1.0, prediction), 2)
+    function predictNext() {
+      if (history.length < 3) {
+        return (Math.random() * 2 + 1).toFixed(2);
+      }
+      let last3 = history.slice(-3);
+      let avg = last3.reduce((a, b) => a + b, 0) / 3;
+      let prediction = avg + (Math.random() * 0.8 - 0.4);
+      return Math.max(1, prediction).toFixed(2);
+    }
 
-def generate_result():
-    chance = random.random()
-    if chance < 0.1:
-        return round(random.uniform(1.0, 1.5), 2)
-    elif chance < 0.9:
-        return round(random.uniform(1.5, 3.0), 2)
-    else:
-        return round(random.uniform(3.0, 100.0), 2)
+    function generateResult() {
+      let chance = Math.random();
+      if (chance < 0.1) return (Math.random() * 0.5 + 1).toFixed(2);
+      if (chance < 0.9) return (Math.random() * 1.5 + 1.5).toFixed(2);
+      return (Math.random() * 97 + 3).toFixed(2);
+    }
 
-def start_round():
-    predicted = predict_next()
-    prediction_var.set(f"🔮 Prediction: {predicted}x")
+    function startRound() {
+      let prediction = predictNext();
+      document.getElementById("prediction").innerText = "🔮 Prediction: " + prediction + "x";
 
-    result = generate_result()
-    history.append(result)
-    result_var.set(f"📊 Result: {result}x")
+      setTimeout(() => {
+        let result = generateResult();
+        history.push(parseFloat(result));
+        document.getElementById("result").innerText = "📊 Result: " + result + "x";
 
-    history_text.configure(state='normal')
-    history_text.insert(tk.END, f"Round {len(history)}: Prediction: {predicted}x | Result: {result}x\n")
-    history_text.configure(state='disabled')
-
-# GUI setup
-root = tk.Tk()
-root.title("🚀 Aviator-style Prediction Demo")
-root.geometry("500x400")
-root.resizable(False, False)
-
-style = ttk.Style()
-style.configure("TButton", font=("Segoe UI", 12), padding=10)
-
-# Widgets
-prediction_var = tk.StringVar()
-result_var = tk.StringVar()
-
-ttk.Label(root, text="🎮 Aviator Prediction Tool (Demo)", font=("Segoe UI", 16, "bold")).pack(pady=10)
-ttk.Label(root, textvariable=prediction_var, font=("Segoe UI", 14), foreground="blue").pack()
-ttk.Label(root, textvariable=result_var, font=("Segoe UI", 14), foreground="green").pack()
-
-ttk.Button(root, text="▶ Start Round", command=start_round).pack(pady=10)
-
-history_frame = ttk.LabelFrame(root, text="📋 History", padding=10)
-history_frame.pack(padx=10, pady=10, fill="both", expand=True)
-
-history_text = tk.Text(history_frame, height=10, state='disabled', font=("Consolas", 10))
-history_text.pack(fill="both", expand=True)
-
-root.mainloop()
+        let log = document.getElementById("log");
+        log.innerHTML = `Round ${history.length}: Prediction = ${prediction}x | Result = ${result}x<br>` + log.innerHTML;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
