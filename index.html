@@ -26,7 +26,7 @@
     h1 {
       margin: 30px 0 10px;
     }
-    .round-number, .countdown {
+    .countdown {
       font-size: 20px;
       color: #ffcc00;
       margin-top: 5px;
@@ -40,6 +40,17 @@
       border: none;
       width: 200px;
       text-align: center;
+      font-size: 24px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background: limegreen;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
     .result-text {
       margin-top: 30px;
@@ -77,11 +88,11 @@
   </nav>
 
   <h1>Color Trading</h1>
-  <div class="round-number" id="roundCounter">Round: 0</div>
   <div class="countdown" id="countdown">Next result in: 40s</div>
 
   <div class="input-section">
-    <input type="text" id="codeInput" placeholder="Enter Code and Press Enter" onkeydown="handleEnter(event)" />
+    <input type="text" id="codeInput" readonly value="3" />
+    <button onclick="startGame()">Start</button>
   </div>
 
   <div class="result-text" id="resultDisplay"></div>
@@ -109,30 +120,16 @@
     ];
 
     let patternIndex = 0;
-    let roundNumber = 0;
-    let autoRunning = false;
     let countdown = 40;
-    let countdownInterval;
-    let resultInterval;
+    let countdownInterval, resultInterval;
+    let currentNumber = 3;
 
-    function handleEnter(event) {
-      if (event.key === "Enter") {
-        const code = document.getElementById("codeInput").value.trim();
-        if (code === "") {
-          alert("Please enter a code.");
-          return;
-        }
-
-        document.getElementById("codeInput").disabled = true;
-
-        if (!autoRunning) {
-          autoRunning = true;
-          showResult(); // Show first result
-          startCountdown();
-          resultInterval = setInterval(showResult, 40000); // Every 40 sec
-          countdownInterval = setInterval(updateCountdown, 1000); // Every 1 sec
-        }
-      }
+    function startGame() {
+      showResult(); // Show first result instantly
+      startCountdown();
+      resultInterval = setInterval(showResult, 40000);
+      countdownInterval = setInterval(updateCountdown, 1000);
+      document.querySelector("button").disabled = true;
     }
 
     function showResult() {
@@ -140,11 +137,13 @@
       const colorResult = colorPattern[patternIndex % colorPattern.length];
 
       document.getElementById("resultDisplay").textContent = `✅ Result: ${bsResult} | ${colorResult}`;
-      roundNumber++;
-      document.getElementById("roundCounter").textContent = `Round: ${roundNumber}`;
+
+      // Update input field value (3, 4, 5, ...)
+      currentNumber++;
+      document.getElementById("codeInput").value = currentNumber;
 
       patternIndex++;
-      countdown = 40; // Reset countdown after every result
+      countdown = 40;
     }
 
     function updateCountdown() {
