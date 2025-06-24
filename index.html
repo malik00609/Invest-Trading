@@ -88,7 +88,7 @@
   </nav>
 
   <h1>Color Trading</h1>
-  <div class="countdown" id="countdown">Next result in: 40s</div>
+  <div class="countdown" id="countdown">Next result in: 60s</div>
 
   <div class="input-section">
     <input type="number" id="codeInput" placeholder="Enter Start Number" />
@@ -120,7 +120,7 @@
     ];
 
     let patternIndex = 0;
-    let countdown = 40;
+    let countdown = 60;
     let countdownInterval, resultInterval;
     let currentNumber = 0;
 
@@ -138,7 +138,8 @@
       document.querySelector("button").disabled = true;
 
       showResult();
-      resultInterval = setInterval(showResult, 40000);
+      resultInterval = setInterval(showResult, 60000); // 60 seconds
+      countdown = 60;
       countdownInterval = setInterval(updateCountdown, 1000);
     }
 
@@ -150,7 +151,7 @@
 
       currentNumber++;
       patternIndex++;
-      countdown = 40;
+      countdown = 60; // reset timer
     }
 
     function updateCountdown() {
