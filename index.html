@@ -34,7 +34,7 @@
     .input-section {
       margin-top: 20px;
     }
-    input[type="text"] {
+    input[type="number"] {
       padding: 10px;
       border-radius: 5px;
       border: none;
@@ -91,7 +91,7 @@
   <div class="countdown" id="countdown">Next result in: 40s</div>
 
   <div class="input-section">
-    <input type="text" id="codeInput" readonly value="3" />
+    <input type="number" id="codeInput" placeholder="Enter Start Number" />
     <button onclick="startGame()">Start</button>
   </div>
 
@@ -122,26 +122,33 @@
     let patternIndex = 0;
     let countdown = 40;
     let countdownInterval, resultInterval;
-    let currentNumber = 3;
+    let currentNumber = 0;
 
     function startGame() {
-      showResult(); // Show first result instantly
-      startCountdown();
+      const input = document.getElementById("codeInput");
+      const startFrom = parseInt(input.value);
+
+      if (isNaN(startFrom)) {
+        alert("Please enter a valid number.");
+        return;
+      }
+
+      currentNumber = startFrom;
+      input.disabled = true;
+      document.querySelector("button").disabled = true;
+
+      showResult();
       resultInterval = setInterval(showResult, 40000);
       countdownInterval = setInterval(updateCountdown, 1000);
-      document.querySelector("button").disabled = true;
     }
 
     function showResult() {
       const bsResult = fixedPattern[patternIndex % fixedPattern.length];
       const colorResult = colorPattern[patternIndex % colorPattern.length];
 
-      document.getElementById("resultDisplay").textContent = `✅ Result: ${bsResult} | ${colorResult}`;
+      document.getElementById("resultDisplay").textContent = `✅ ${currentNumber}: ${bsResult} | ${colorResult}`;
 
-      // Update input field value (3, 4, 5, ...)
       currentNumber++;
-      document.getElementById("codeInput").value = currentNumber;
-
       patternIndex++;
       countdown = 40;
     }
@@ -149,10 +156,6 @@
     function updateCountdown() {
       countdown--;
       document.getElementById("countdown").textContent = `Next result in: ${countdown}s`;
-    }
-
-    function startCountdown() {
-      document.getElementById("countdown").textContent = `Next result in: 40s`;
     }
   </script>
 </body>
