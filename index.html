@@ -26,30 +26,35 @@
     h1 {
       margin: 30px 0 10px;
     }
-    .countdown {
-      font-size: 20px;
-      color: #ffcc00;
-      margin-top: 5px;
+    .timer-buttons button {
+      background: dodgerblue;
+      color: white;
+      padding: 12px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .timer-buttons button.active {
+      background: limegreen;
     }
     .input-section {
       margin-top: 20px;
     }
-    input[type="number"] {
+    input[type="text"] {
       padding: 10px;
       border-radius: 5px;
       border: none;
-      width: 200px;
-      text-align: center;
-      font-size: 24px;
+      width: 150px;
     }
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 18px;
-      background: limegreen;
-      color: black;
+    .result-button {
+      background: green;
+      color: white;
+      padding: 10px 15px;
       border: none;
       border-radius: 5px;
+      margin-left: 10px;
       cursor: pointer;
     }
     .result-text {
@@ -57,11 +62,6 @@
       font-size: 24px;
       font-weight: bold;
       color: #00ff7f;
-      animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
     }
     .links {
       margin-top: 40px;
@@ -88,75 +88,51 @@
   </nav>
 
   <h1>Color Trading</h1>
-  <div class="countdown" id="countdown">Next result in: 60s</div>
+
+  <div class="timer-buttons">
+    <button onclick="selectTime(this)">30 Seconds</button>
+    <button onclick="selectTime(this)">1 Minute</button>
+    <button onclick="selectTime(this)">3 Minutes</button>
+    <button onclick="selectTime(this)">5 Minutes</button>
+  </div>
 
   <div class="input-section">
-    <input type="number" id="codeInput" placeholder="Enter Start Number" />
-    <button onclick="startGame()">Start</button>
+    <input type="text" id="codeInput" placeholder="Enter Code" />
+    <button class="result-button" onclick="showResult()">Show Result</button>
   </div>
 
   <div class="result-text" id="resultDisplay"></div>
 
   <div class="links">
-    <a href="https://www.fantasygems10.com/#/register?invitationCode=22386407377" target="_blank">🎮 Play FANTASY+</a>
+    <a href="https://www.fantasygems.world/#/register?invitationCode=22386407377" target="_blank">🌟 Play Fantasy+ Game</a>
     <a href="https://whatsapp.com/channel/0029VbB00RE5fM5SO0umup1H" target="_blank">📲 Join WhatsApp Channel</a>
   </div>
 
   <script>
+    let currentSelection = null;
     const fixedPattern = [
-      "BIG", "SMALL", "BIG", "BIG", "BIG", "SMALL", "SMALL",
-      "BIG", "SMALL", "BIG", "BIG", "SMALL", "BIG", "SMALL",
-      "BIG", "BIG", "BIG", "SMALL", "BIG", "SMALL", "SMALL",
-      "SMALL", "SMALL", "BIG", "BIG", "SMALL", "BIG", "SMALL",
-      "BIG", "SMALL", "BIG", "SMALL"
+      "ODD", "ODD", "ODD", "EVEN", "ODD", "EVEN", "EVEN",
+      "ODD", "EVEN", "ODD", "EVEN", "ODD", "ODD", "ODD",
+      "ODD", "EVEN", "ODD", "EVEN", "ODD", "EVEN", "ODD",
+      "EVEN", "ODD", "EVEN", "EVEN"
     ];
-
-    const colorPattern = [
-      "RED", "GREEN", "GREEN", "RED", "RED", "GREEN", "RED",
-      "GREEN", "RED", "RED", "GREEN", "GREEN", "RED", "RED",
-      "GREEN", "GREEN", "RED", "GREEN", "RED", "RED", "GREEN",
-      "RED", "GREEN", "RED", "GREEN", "RED", "GREEN", "RED",
-      "GREEN", "RED", "RED", "GREEN"
-    ];
-
     let patternIndex = 0;
-    let countdown = 60;
-    let countdownInterval, resultInterval;
-    let currentNumber = 0;
 
-    function startGame() {
-      const input = document.getElementById("codeInput");
-      const startFrom = parseInt(input.value);
-
-      if (isNaN(startFrom)) {
-        alert("Please enter a valid number.");
-        return;
-      }
-
-      currentNumber = startFrom;
-      input.disabled = true;
-      document.querySelector("button").disabled = true;
-
-      showResult();
-      resultInterval = setInterval(showResult, 60000); // 60 seconds
-      countdown = 60;
-      countdownInterval = setInterval(updateCountdown, 1000);
+    function selectTime(btn) {
+      document.querySelectorAll('.timer-buttons button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentSelection = btn.textContent;
     }
 
     function showResult() {
-      const bsResult = fixedPattern[patternIndex % fixedPattern.length];
-      const colorResult = colorPattern[patternIndex % colorPattern.length];
+      if (!currentSelection) {
+        alert("Please select a time first.");
+        return;
+      }
 
-      document.getElementById("resultDisplay").textContent = `✅ ${currentNumber}: ${bsResult} | ${colorResult}`;
-
-      currentNumber++;
-      patternIndex++;
-      countdown = 60; // reset timer
-    }
-
-    function updateCountdown() {
-      countdown--;
-      document.getElementById("countdown").textContent = `Next result in: ${countdown}s`;
+      const result = fixedPattern[patternIndex];
+      document.getElementById("resultDisplay").textContent = `✅ Result: ${result}`;
+      patternIndex = (patternIndex + 1) % fixedPattern.length;
     }
   </script>
 </body>
